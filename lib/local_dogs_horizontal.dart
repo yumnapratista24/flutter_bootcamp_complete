@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_new_app/models/dog.dart';
 import 'package:flutter_new_app/widgets/dog_profile_card.dart';
+import 'package:http/http.dart' as http;
 
 class LocalDogsHorizontal extends StatefulWidget {
   const LocalDogsHorizontal({super.key});

@@ -14,24 +14,17 @@ class DogProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Image.network(
-            imageUrl,
-            width: 200,
-            height: 200,
-          ),
-          Text(name),
-          Text(type),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Image.network(
+          imageUrl,
+          width: 200,
+          height: 200,
+        ),
+        Text(name),
+        Text(type),
+      ],
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_new_app/models/dog.dart';
 import 'package:flutter_new_app/models/list_of_dogs.dart';
 import 'package:flutter_new_app/widgets/dog_profile_card.dart';
+import 'package:http/http.dart' as http;
 
 class AsynchronousMultipleExample extends StatefulWidget {
   const AsynchronousMultipleExample({super.key});
@@ -39,11 +40,27 @@ class _AsynchronousMultipleExampleState
                 },
               )
             : ElevatedButton(
-                onPressed: readJson,
+                onPressed: fetchDogs,
                 child: Text('Klik disini untuk mendapatkan data'),
               ),
       ),
     );
+  }
+
+  Future<void> fetchDogs() async {
+    final response = await http.get(
+      Uri.parse('http://localhost:3001/dogs'),
+    );
+
+    if (response.statusCode == 200) {
+      ListOfDogs res = ListOfDogs.fromJson(
+        jsonDecode(response.body),
+      );
+
+      setState(() {
+        dogs = res;
+      });
+    }
   }
 
   Future<void> readJson() async {
